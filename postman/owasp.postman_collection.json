@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "06a1cddd-e691-4e4f-96b0-427c11008cd6",
+		"name": "owasp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23190370",
+		"_collection_link": "https://solar-flare-88445.postman.co/workspace/OWASP~7fb7959b-3f68-4452-a3bf-669ec09076a2/collection/23190370-06a1cddd-e691-4e4f-96b0-427c11008cd6?action=share&source=collection_link&creator=23190370"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/v1/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "csrf_token=test",
+						"type": "text"
+					},
+					{
+						"key": "CSRF-Token",
+						"value": "ap5nOf87-CC-LDFLFJR-Efm0kKlA8auH91LI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test4@gmail.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/register"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/user/3 or true",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/v1/user/3 or true"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/comments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "ap5nOf87-CC-LDFLFJR-Efm0kKlA8auH91LI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"comment\": \"<script>alert('XSS Attack!');</script>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/user/email/update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "4LYRJGai-04kNYElmQJZ0UWpQiA9hlc7Zp_I",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "userId",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userId\": \"2\",\n   \"email\": \"blah@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/user/email/update"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "csrf_token=test",
+						"type": "text"
+					},
+					{
+						"key": "CSRF-Token",
+						"value": "ap5nOf87-CC-LDFLFJR-Efm0kKlA8auH91LI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test3@gmail.com\",\n    \"password\": \"password1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/login"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/user/password/update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "csrf_token=test",
+						"type": "text"
+					},
+					{
+						"key": "CSRF-Token",
+						"value": "ap5nOf87-CC-LDFLFJR-Efm0kKlA8auH91LI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"{\\\"email\\\":\\\"test1@gmail.com\\\",\\\"id\\\":3}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/user/update"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/v1/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/user/password/update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "4LYRJGai-04kNYElmQJZ0UWpQiA9hlc7Zp_I",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userId\": \"2\",\n   \"newPassword\": \"testpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/user/password/update"
+			},
+			"response": []
+		}
+	]
+}

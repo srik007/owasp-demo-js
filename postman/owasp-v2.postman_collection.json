@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "e238c87a-71b6-4b74-ac0e-a9b01b19f519",
+		"name": "owasp-v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23190370",
+		"_collection_link": "https://solar-flare-88445.postman.co/workspace/OWASP~7fb7959b-3f68-4452-a3bf-669ec09076a2/collection/23190370-e238c87a-71b6-4b74-ac0e-a9b01b19f519?action=share&source=collection_link&creator=23190370"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/v2/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test4-v2@gmail.com\",\n    \"password\": \"password5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v2/login"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v2/comments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"comment\": \"<script>alert('XSS Attack!');</script>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v1/user/password/update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "4LYRJGai-04kNYElmQJZ0UWpQiA9hlc7Zp_I",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userId\": \"2\",\n   \"newPassword\": \"testpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v2/user/password/update"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v2/user/email/update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "4LYRJGai-04kNYElmQJZ0UWpQiA9hlc7Zp_I",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"userId\": \"2\",\n   \"email\": \"blah@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v2/user/email/update"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v2/user/update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "4LYRJGai-04kNYElmQJZ0UWpQiA9hlc7Zp_I",
+						"type": "text"
+					},
+					{
+						"key": "userId",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"{\\\"email\\\":\\\"test1@gmail.com\\\",\\\"id\\\":3}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v2/user/update"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v2/comments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CSRF-Token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"comment\": \"<script>alert('XSS Attack!');</script>\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/v1/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/v2/form",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/v2/form"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

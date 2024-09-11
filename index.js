@@ -57,7 +57,7 @@ app.get('/v1/comments', (req, res) => {
 app.post('/v1/comments', (req, res) => {
   const { comment } = req.body;
   comments.push(comment); // Vulnerable to XSS
-  res.redirect('/comments');
+  res.redirect('/v1//comments');
 });
 
 

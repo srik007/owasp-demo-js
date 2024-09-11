@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(csrf({ cookie: { httpOnly: true, secure: true, sameSite: 'Strict' } }));
 
-app.get('/form', function (req, res) {
+app.get('/v2/form', function (req, res) {
   // pass the csrfToken to the view
   res.status(201).send({ csrfToken: req.csrfToken() })
 })
@@ -77,7 +77,7 @@ app.get('/v2/comments', (req, res) => {
 app.post('/v2/comments', (req, res) => {
   const { comment } = req.body;
   comments.push(xss(comment)); // Sanitize input to prevent XSS
-  res.redirect('/comments');
+  res.redirect('/v2/comments');
 });
 
 //3. Broken Authentication Vulnerability
@@ -129,7 +129,10 @@ app.post('/v2/login', loginLimiter, async (req, res) => {
 // 5. Broken Access Control Vulnerability
 // Middleware to authenticate user and attach the userId to the request
 const authenticateUser = (req, res, next) => {
-  req.userId = 1; // Suppose the logged-in user has userId = 1
+  req.userId = req.headers['userid']; // Suppose the logged-in user has userId = 1
+  if (req.userId != 1) {
+    return res.status(403).send('Unauthorized');
+  }
   next();
 };
 
@@ -159,9 +162,8 @@ app.put('/v2/user/password/update', authenticateUser, async (req, res) => {
 
 
 // 6. CSRF token middleware
-app.use(csrf({ cookie: { httpOnly: true, secure: true, sameSite: 'Strict' } }));
 
-pp.post('/v2/user/email/update', async (req, res) => {
+app.post('/v2/user/email/update', async (req, res) => {
   const { userId, email } = req.body;
 
   try {
